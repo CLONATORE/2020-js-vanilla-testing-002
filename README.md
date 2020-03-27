@@ -9,11 +9,12 @@
 * [Testeando String.prototype]()
 * [Arquitectura del proyecto]()
 * [Diseñando nuestros Tests]()
-* [split(character)]()
-* [toLowerCase()]()
-* [toUpperCase()]()
-* [indexOf(substring [, startFrom])]()
-* [charAt(number)]()
+* [split]()
+* [charAt]()
+* [toLowerCase]()
+* [toUpperCase]()
+* [indexOf]()
+* [Lanzando la Suite de Test]()
 
 ### Testeando String.prototype
 ```
@@ -126,33 +127,46 @@ test02-toUpperCase.js
 ### Diseñando nuestros Tests
 
 ```
-Seguidamente ejecutamos el siguiente comando para crear la suite de test vacia.
-  $ touch suite.test.js
-En la terminal, abrimos nuestro editor y copiamos el siguiente código:
+Llegados a este punto lo que vamos hacer es diseñar nuestra bateria de test.
+Con ella, lo que vamos a conseguir es tener un diseño primerizo que nos va a permitir tener
+una primera visión.
+
+Por supuesto, no vamos a implementar nada todavía, simplemente vamos a diseñar.
+
+Nos basamos en el patrón AAA que vimos anteriormente y procedemos método a método:
+```
+
+#### split
+```
+En la terminal, abrimos nuestro editor y copiamos el siguiente código en suite.test.js:
 
 ' 
-    const concatenar = require('./test02.js');                                       //L-1
+    const split = require('./test02-split.js');                                                  //L-1
 
-    test('Concatena Hello + Victor to equal "Hello Victor"', function ()    {        //L-3
+    test('Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] )', ()=>{      //L-3
     // Arrange
-    var expected = "Hello Victor";                                                   //L-5
+    var expected = ["user","ape1","ape2","city"];                                                //L-5
 
     // Act
-    var result = concatenar("Victor");                                               //L-8
+    var result = split("user:ape1:ape2:city",':');                                               //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                   //L-11
-    });                                                                              //L-12
+    expect(result).toBe(expected);                                                               //L-11
+    });                                                                                          //L-12
 
 '
 
 Fíjese que estamos diseñando un test sin tener la implementación todavía.
-Estamos dando por hecho que nuestra función 'concatenar' necesita un parámetro de entrada
-y el resultado es la concatenación con la palabra "Hello".
+Estamos dando por hecho que nuestra función 'split' necesita dos parámetro de entrada.
+
+Un primero parámetro donde va la string que queremos separar. 
+Un segundo parámetro con el separador.
+
+El resultado es la separación de la String con cada cadena.
 
 A continuación describimos cada una de las líneas:
 
-L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de concatenación.
+L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de Split.
 L-3  - Define la cabecera de una función de Testing para el framework de 'Jest'. 
 L-5  - Inicializamos variables.
 L-8  - Llamámos al método de nuestro Test.
@@ -162,108 +176,176 @@ L-12 - Cierre de la función.
 Cerramos el editor y volvemos a la terminal.
 ```
 
-### Qué es un test unitario?
+#### chartAt
 
 ```
-Es una forma de comprobar el correcto funcionamiento de una unidad de código.
+En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) en suite.test.js:
 
-Debemos de entender que un método solo debe de tener un solo comportamiento, pues incluir una clausula 
-'if-else' nos lleva a tener dos estados. Para poder validar estos dos estados debemos de tener dos métodos
-independientes que validen la clásula 'if' y otro método que valida la cláusula 'else'.
+' 
+    const charAt = require('./test02-charAt.js');                                                //L-1
 
-De esta manera cumpliremos el propósito de test unitario, simplemente un unidad de código.
+    test('CharAt("user:ape1:ape2:city",7)  to equals '1' )', ()=>{                               //L-3
+    // Arrange
+    var expected = '7';                                                                          //L-5
 
-Recuerda que para poder decir que hacemos testing, debemos de cubrir todas las salidas del método.
-Piensas qué testeando solo la cláusula 'if-else' está todo hecho?
-Y... si resulta que estoy comprobando el correcto funcionamiento de una división y el denominador es 0 ???
+    // Act
+    var result = split("user:ape1:ape2:city", 1);                                                //L-8
+    
+    // Assert
+    expect(result).toBe(expected);                                                               //L-11
+    });                                                                                          //L-12
 
-Ahí lo dejo...
+'
+
+Fíjese que estamos diseñando un test sin tener la implementación todavía.
+Estamos dando por hecho que nuestra función 'charAt' necesita dos parámetro de entrada.
+
+Un primero parámetro donde va la string. 
+Un segundo parámetro con el índice a obtener.
+
+El resultado es la obtención de indice número 7 de la String.
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de CharAt.
+L-3  - Define la cabecera de una función de Testing para el framework de 'Jest'. 
+L-5  - Inicializamos variables.
+L-8  - Llamámos al método de nuestro Test.
+L-11 - Comparamos nuestro resultado esperado con el resultado del método que hemos desarrollado.
+L-12 - Cierre de la función.
+
+Cerramos el editor y volvemos a la terminal.
+```
+
+#### toLowerCase
+```
+En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) en suite.test.js:
+
+' 
+    const toLowerCase = require('./test02-toLowerCase.js');                                      //L-1
+
+    test('toLowerCase("Hello World") to equals "hello world")', ()=>{                            //L-3
+    // Arrange
+    var expected = "hello world";                                                                //L-5
+
+    // Act
+    var result = toLowerCase("Hello World");                                                     //L-8
+    
+    // Assert
+    expect(result).toBe(expected);                                                               //L-11
+    });                                                                                          //L-12
+
+'
+
+Fíjese que estamos diseñando un test sin tener la implementación todavía.
+Estamos dando por hecho que nuestra función 'toLowerCase' necesita un parámetro de entrada.
+
+Un primero parámetro donde va la string. 
+
+El resultado es pasar a minúsulas el input de la función.
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de Split.
+L-3  - Define la cabecera de una función de Testing para el framework de 'Jest'. 
+L-5  - Inicializamos variables.
+L-8  - Llamámos al método de nuestro Test.
+L-11 - Comparamos nuestro resultado esperado con el resultado del método que hemos desarrollado.
+L-12 - Cierre de la función.
+
+Cerramos el editor y volvemos a la terminal.
+```
+
+#### toUppercase
+```
+En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) en suite.test.js:
+
+' 
+    const toUppercase = require('./test02-toUppercase.js');                                      //L-1
+
+    test('toUppercase("Hello World") to equals "HELLO WORLD")', ()=>{                            //L-3
+    // Arrange
+    var expected = "HELLO WORLD";                                                                //L-5
+
+    // Act
+    var result = toLowerCase("Hello World");                                                     //L-8
+    
+    // Assert
+    expect(result).toBe(expected);                                                               //L-11
+    });                                                                                          //L-12
+
+'
+
+Fíjese que estamos diseñando un test sin tener la implementación todavía.
+Estamos dando por hecho que nuestra función 'toUppercase' necesita un parámetro de entrada.
+
+Un primero parámetro donde va la string. 
+
+El resultado es pasar a mayúsculas el input de la función.
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de Split.
+L-3  - Define la cabecera de una función de Testing para el framework de 'Jest'. 
+L-5  - Inicializamos variables.
+L-8  - Llamámos al método de nuestro Test.
+L-11 - Comparamos nuestro resultado esperado con el resultado del método que hemos desarrollado.
+L-12 - Cierre de la función.
+
+Cerramos el editor y volvemos a la terminal.
+```
+
+#### indexOf
+```
+En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) en suite.test.js:
+
+' 
+    const indexOf = require('./test02-indexOf.js');                                              //L-1
+
+    test('indexOf("Hello World","World") to equals 6)', ()=>{                                    //L-3
+    // Arrange
+    var expected = 6;                                                                            //L-5
+
+    // Act
+    var result = toLowerCase("Hello World");                                                     //L-8
+    
+    // Assert
+    expect(result).toBe(expected);                                                               //L-11
+    });                                                                                          //L-12
+
+'
+
+Fíjese que estamos diseñando un test sin tener la implementación todavía.
+Estamos dando por hecho que nuestra función 'indexOf' necesita dos parámetro de entrada
+
+Un primero parámetro donde va la string. 
+Un segundo parámetro donde va la busqueda de la palabra a buscar.
+
+El resultado es obtener un número que indique la posición de la palabra.
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Permite a 'Jest' acceder a la función de nuestro algoritmo de Split.
+L-3  - Define la cabecera de una función de Testing para el framework de 'Jest'. 
+L-5  - Inicializamos variables.
+L-8  - Llamámos al método de nuestro Test.
+L-11 - Comparamos nuestro resultado esperado con el resultado del método que hemos desarrollado.
+L-12 - Cierre de la función.
+
+Cerramos el editor y volvemos a la terminal.
 
 ```
 
-### Cómo vamos escribir los test unitarios ?
+### Lanzando la Suite de Test
 
 ```
-Ahora mismo el alumno no debe de escribir ningún test, simplemente absorver conocimiento.
+Ahora simplemente vamos a lanzar Jest por la terminal para ver que nuestro tests fallan.
+Es necesario realizar este primer paso antes de dar implementación a nuestros tests.
 
-Vamos a proveerte de soluciones ya estructuradas donde aprenderas a pensar.
-Para ello usaremos 'ingeniería inversa'.
-
-Al principio te daremos la solución hecha y simplemente tendrás que analizar y absorver el conocimiento.
-En una segunda iteración te daremos partes del mismo, y sabiendo que previamente obtuvistes un conocimiento
-'end-to-end', deberás añadir la partes que falten.
-
-De esta manera, iremos poco a poco afinando y puliendo la técnica del testing.
-
-```
-
-### Qué es un convenio ?
-```
-Es un acuerdo de voluntades. Dícese de ese tipo de normas que debes de tener a la hora de escribir código.
-
-Esto permite que varios desarrolladores de diferentes partes del mundo, puedan trabajar juntos sin tener 
-conflictos de sintaxis.
-
-Al tratar una norma de escritura, todos se entienden mejor.
-
-El uso de patrones o plantillas permite que nuestro código sea agnóstico al lenguaje del habla de cada
-persona.
-
-Piensa que tu hablas español y tu compañero que colabora en un repositorio habla chino.
-Seguro que si ambos escribís en un mismo lenguaje de programación con unas normas mínimas, os entenderéis
-dando igual la procedencia.
-
-```
-
-### Qué patrones vamos a usar ?
-
-```
-Incidiendo en la estructura de cómo vamos a definir el contenido de un método, vamos a usar un estándar.
-Tu por ahora no tendras que hacer nada, simplemente absorver información.
-
-Cuando testeemos, debemos de ser limpios y concisos.
-Hay que escribir lo mínimo viable e intentar ser lo máximo expresivo posible.
-
-Para ello vamos a usar el patrón AAA.
-Dicho patrón define el cuerpo de un test en tres partes. 
-
-
-* Arrange (Organizar/Inicializa) => inicializa los objetos y establece los valores de los datos 
-                                    que vamos a utilizar en el Test que lo contiene.
-                                    
-                                    
-* Act (Actuar)                   => realiza la llamada al método a probar con los parámetros preparados 
-                                    para tal fin.
-
-
-* Assert (Confirmar/Comprobar)   => comprueba que el método de pruebas ejecutado se comporta tal y 
-                                    como teníamos previsto que lo hiciera.
-                                   
-Este concepto puede ser bueno a la hora de implementar pequeños métodos.
-```
-
-#### Definición de un Test normal
-
-```js
-test('Sum 1 + 2 to equal 3', function () {
-  expect(sum(1, 2)).toBe(3);
-});
-
-```
-
-#### Definición de un Test con Patrón AAA
-
-```js
-test('Sum 1 + 2 to equal 3', function () {
-// Arrange
-var expected = 3;
-
-// Act
-var result = sum(1, 2);
-
-// Assert
-expect(result).toBe(expected);
-});
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
 
 ```
 
