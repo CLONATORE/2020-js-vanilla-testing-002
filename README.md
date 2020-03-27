@@ -6,20 +6,22 @@
 
 ## Temario
 
-* [Testeando String.prototype]()
-* [Arquitectura del proyecto]()
-* [Diseñando nuestros Tests]()
-    * [split]()
-    * [charAt]()
-    * [toLowerCase]()
-    * [toUpperCase]()
-    * [indexOf]()
-* [Lanzando la Suite de Test]()
-    * [split]()
-    * [charAt]()
-    * [toLowerCase]()
-    * [toUpperCase]()
-    * [indexOf]()
+* [Testeando String.prototype](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#testeando-stringprototype)
+* [Arquitectura del proyecto](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#arquitectura-del-proyecto)
+* [Diseñando nuestros Tests](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#dise%C3%B1ando-nuestros-tests)
+    * [split](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#split)
+    * [charAt](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#chartat)
+    * [toLowerCase](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#tolowercase)
+    * [toUpperCase](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#touppercase)
+    * [indexOf](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#indexof)
+* [Lanzando la Suite de Test](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#lanzando-la-suite-de-test)
+    * [split](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#split-1)
+    * [charAt](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#charat)
+    * [toLowerCase](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#tolowercase-1)
+    * [toUpperCase](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#touppercase-1)
+    * [indexOf](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#indexof-1)
+* [Conclusiones](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#conclusiones)
+* [Referencias](https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002#referencias)
 
 ### Testeando String.prototype
 ```
