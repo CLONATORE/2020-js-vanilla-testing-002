@@ -7,7 +7,7 @@
 ## Temario
 
 * [Testeando String.prototype]()
-* [Arquitectura del proyecto]
+* [Arquitectura del proyecto]()
 * [Diseñando nuestros Tests]()
 * [split(character)]()
 * [toLowerCase()]()
@@ -96,14 +96,14 @@ Vamos a definir 5 ficheros primeramente.
 
 Ficheros 
 
-* tes02-split.js
-* tes02-toLowerCase.js
-* tes02-toUpperCase.js
-* tes02-charAt.js
-* tes02-indexOf.js
+* test02-split.js
+* test02-toLowerCase.js
+* test02-toUpperCase.js
+* test02-charAt.js
+* test02-indexOf.js
 
 Lanzamos el siguiente comando por la terminal de git-bash.
-  $ touch tes02-split.js test02-toLowerCase.js test02-toUpperCase.js test02-chartAt.js test02-indexOf.js
+  $ touch test02-split.js test02-toLowerCase.js test02-toUpperCase.js test02-chartAt.js test02-indexOf.js
 
 
 Para saber que todo se ha hecho correctamente, dentro de nuestra carpeta ejecutamos el comando:
@@ -113,9 +113,9 @@ Debes visualizar estas elementos:
 
 node_modules/
 package.json
-ackage-lock.json
+package-lock.json
 suite.test.js
-tes02-split.js
+test02-split.js
 test02-chartAt.js
 test02-indexOf.js
 test02-toLowerCase.js
