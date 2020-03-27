@@ -627,9 +627,11 @@ Debemos de obtener la siguiente salida:
 ```
 Hemos empezado hacer TDD sin saberlo.
 Hemos guiado el diseño de nuestros algoritmos a través de los test y no al revés.
+
+Revisa las referencias.
 ```
 
 
 ### Referencias
   * [String.prototype](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/prototype)
-
+  * [TDD](https://medium.com/laboratoria-how-to/qu%C3%A9-es-tdd-por-qu%C3%A9-todos-te-odiar%C3%A1n-si-no-lo-haces-63ce217d2bc3]
