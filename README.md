@@ -15,6 +15,11 @@
 * [toUpperCase]()
 * [indexOf]()
 * [Lanzando la Suite de Test]()
+* [split]()
+* [charAt]()
+* [toLowerCase]()
+* [toUpperCase]()
+* [indexOf]()
 
 ### Testeando String.prototype
 ```
@@ -143,7 +148,7 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código en suite.
 ' 
     const split = require('./test02-split.js');                                                  //L-1
 
-    test('Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] )', ()=>{      //L-3
+    test('Split("user:ape1:ape2:city",\':\' to equals ["user","ape1","ape2","city"] )', ()=>{      //L-3
     // Arrange
     var expected = ["user","ape1","ape2","city"];                                                //L-5
 
@@ -151,7 +156,7 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código en suite.
     var result = split("user:ape1:ape2:city",':');                                               //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                               //L-11
+    expect(result).toStrictEqual(expected);                                                      //L-11
     });                                                                                          //L-12
 
 '
@@ -184,16 +189,16 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) e
 ' 
     const charAt = require('./test02-charAt.js');                                                //L-1
 
-    test('CharAt("user:ape1:ape2:city",7)  to equals '1' )', ()=>{                               //L-3
+    test('CharAt("user:ape1:ape2:city",8)  to equals 1 )', ()=>{                                 //L-3
     // Arrange
-    var expected = '7';                                                                          //L-5
+    var toBe = '1';                                                                              //L-5
 
     // Act
-    var result = split("user:ape1:ape2:city", 1);                                                //L-8
+    var result = charAt("user:ape1:ape2:city", 8);                                              //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                               //L-11
-    });                                                                                          //L-12
+    expect(result).toEqual(toBe);                                                               //L-11
+    });                                                                                         //L-12
 
 '
 
@@ -226,13 +231,13 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) e
 
     test('toLowerCase("Hello World") to equals "hello world")', ()=>{                            //L-3
     // Arrange
-    var expected = "hello world";                                                                //L-5
+    var toBe = "hello world";                                                                    //L-5
 
     // Act
     var result = toLowerCase("Hello World");                                                     //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                               //L-11
+    expect(result).toBe(toBe);                                                                   //L-11
     });                                                                                          //L-12
 
 '
@@ -265,13 +270,13 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) e
 
     test('toUppercase("Hello World") to equals "HELLO WORLD")', ()=>{                            //L-3
     // Arrange
-    var expected = "HELLO WORLD";                                                                //L-5
+    var toBe = "HELLO WORLD";                                                                    //L-5
 
     // Act
-    var result = toLowerCase("Hello World");                                                     //L-8
+    var result = toUppercase("Hello World");                                                     //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                               //L-11
+    expect(result).toBe(toBe);                                                                   //L-11
     });                                                                                          //L-12
 
 '
@@ -304,13 +309,13 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) e
 
     test('indexOf("Hello World","World") to equals 6)', ()=>{                                    //L-3
     // Arrange
-    var expected = 6;                                                                            //L-5
+    var toBe = 6;                                                                                //L-5
 
     // Act
-    var result = toLowerCase("Hello World");                                                     //L-8
+    var result = indexOf("Hello World","World");                                                 //L-8
     
     // Assert
-    expect(result).toBe(expected);                                                               //L-11
+    expect(result).toBe(toBe);                                                                   //L-11
     });                                                                                          //L-12
 
 '
@@ -321,7 +326,7 @@ Estamos dando por hecho que nuestra función 'indexOf' necesita dos parámetro d
 Un primero parámetro donde va la string. 
 Un segundo parámetro donde va la busqueda de la palabra a buscar.
 
-El resultado es obtener un número que indique la posición de la palabra.
+El resultado es obtener un número/índice que indique la posición de la palabra.
 
 A continuación describimos cada una de las líneas:
 
@@ -337,7 +342,6 @@ Cerramos el editor y volvemos a la terminal.
 ```
 
 ### Lanzando la Suite de Test
-
 ```
 Ahora simplemente vamos a lanzar Jest por la terminal para ver que nuestro tests fallan.
 Es necesario realizar este primer paso antes de dar implementación a nuestros tests.
@@ -347,35 +351,285 @@ Ejecutamos el siguiente comando :
     
 Debemos de obtener la siguiente salida:
 
+
+        > @ test C:\Users\vbolinches\Documents\002-testing
+        > jest
+
+        FAIL ./suite.test.js
+          ● Test suite failed to run
+
+            Cannot find module './test02-split.js' from 'suite.test.js'
+
+            > 1 | const split = require('./test02-split.js');                                                 
+                |                      ^
+              2 |
+              3 |     test('Split("user:ape1:ape2:city",\':\' to equals ["user","ape1",...      
+              4 |     // Arrange
+
+              at Resolver.resolveModule (node_modules/jest-resolve/build/index.js:296:11)
+              at Object.<anonymous> (suite.test.js:1:22)
+
+
+Es muy importante saber qué nos quiere decir el interprete de JS con este fallo...
+Recordar que simplemente hemos diseñado y no hemos hecho implementación de nuestros algoritmos.
+
+El error recalca que hay algún fallo en el fichero './test02-split.js'. 
+Exactamente indica que no resuleve un método exportado..
+Obvio, no tenemos implementación.
+```
+
+### split 
+```
+Ahora vamos a desarrollar nuestro algoritmo split:
+
+En la propia carpeta '002-testing' ejecutamos el siguiente comando:
+    $ touch test02-split.js
+
+En este fichero vamos añadir una pequeña función que devuelva una Array separando la palabras
+de nuestra string por separador.
+
+Abrimos nuestro editor y copiamos el siguiente código:
+
+' 
+    function split(param, separador) {                                               //L-1
+        return param.split(separador);                                               //L-2
+    }                                                                                //L-3
+   
+    module.exports = split;                                                          //L-5
+'
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Define la cabecera de nuestro algoritmo, junto con el parametro de entrada.
+L-2  - Línea que indica la devolución del resultado de nuestro método.
+L-3  - Cierre de nuestro algoritmo.
+L-5  - Almacena la función 'split' en una variable que luego 'Jest' recupera con 
+       la línea 1 del fichero suite.test.js 
+       
+Cerramos el editor y volvemos a la terminal.
+
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
+
+        FAIL ./suite.test.js
+          √ Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] ) (4ms)
+          × CharAt("user:ape1:ape2:city",8)  to equals 1 ) (3ms)
+          × toLowerCase("Hello World") to equals "hello world")
+          × toUppercase("Hello World") to equals "HELLO WORLD")
+          × indexOf("Hello World","World") to equals 6)
+               ...
+
+Hemos pasado el test en Verde!
+Simplemente se queja de que el siguiente test no tiene implementación.
+
+```
+
+### charAt 
+```
+Ahora vamos a desarrollar nuestro algoritmo charAt:
+
+En la propia carpeta '002-testing' ejecutamos el siguiente comando:
+    $ touch test02-charAt.js
+
+En este fichero vamos añadir una pequeña función que devuelva una 'char' indicando
+un índice en un segundo parámetro.
+
+Abrimos nuestro editor y copiamos el siguiente código:
+
+'
+    function charAt(param, separador) {                                              //L-1
+        return param.charAt(separador);                                              //L-2
+    }                                                                                //L-3
+   
+    module.exports = charAt;                                                         //L-5
+'
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Define la cabecera de nuestro algoritmo, junto con el parametro de entrada.
+L-2  - Línea que indica la devolución del resultado de nuestro método.
+L-3  - Cierre de nuestro algoritmo.
+L-5  - Almacena la función 'charAt' en una variable que luego 'Jest' recupera con 
+       la línea 1 del fichero suite.test.js 
+       
+Cerramos el editor y volvemos a la terminal.
+
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
+     
+        FAIL ./suite.test.js
+          √ Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] ) (4ms)
+          √ CharAt("user:ape1:ape2:city",8)  to equals 1 ) (3ms)
+          × toLowerCase("Hello World") to equals "hello world")
+          × toUppercase("Hello World") to equals "HELLO WORLD")
+          × indexOf("Hello World","World") to equals 6)
+            ...
+                        
+Ya no tenemos Fallo! 
+Simplemente se queja de que el siguiente test no tiene implementación.
+
+```
+
+
+### toLowerCase 
+```
+Ahora vamos a desarrollar nuestro algoritmo toLowerCase:
+
+En la propia carpeta '002-testing' ejecutamos el siguiente comando:
+    $ touch test02-toLowerCase.js
+
+En este fichero vamos añadir una pequeña función que devuelva una 'string' 
+pasando nuestro argumento a letras en minúsculas.
+
+Abrimos nuestro editor y copiamos el siguiente código:
+
+'
+    function toLowerCase(param) {                                                    //L-1
+        return param.toLowerCase();                                                  //L-2
+    }                                                                                //L-3
+   
+    module.exports = toLowerCase;                                                    //L-5
+'
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Define la cabecera de nuestro algoritmo, junto con el parametro de entrada.
+L-2  - Línea que indica la devolución del resultado de nuestro método.
+L-3  - Cierre de nuestro algoritmo.
+L-5  - Almacena la función 'toLowerCase' en una variable que luego 'Jest' recupera con 
+       la línea 1 del fichero suite.test.js 
+       
+Cerramos el editor y volvemos a la terminal.
+
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
+        
+         FAIL ./suite.test.js
+          √ Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] ) (4ms)
+          √ CharAt("user:ape1:ape2:city",8)  to equals 1 ) (3ms)
+          √ toLowerCase("Hello World") to equals "hello world")
+          × toUppercase("Hello World") to equals "HELLO WORLD")
+          × indexOf("Hello World","World") to equals 6)
+
+Ya no tenemos Fallo! 
+Simplemente se queja de que el siguiente test no tiene implementación.
+
+```
+
+### toUpperCase 
+```
+Ahora vamos a desarrollar nuestro algoritmo toLowerCase:
+
+En la propia carpeta '002-testing' ejecutamos el siguiente comando:
+    $ touch test02-toUpperCase.js
+
+En este fichero vamos añadir una pequeña función que devuelva una 'string' 
+pasando nuestro argumento a letras en mayúsculas.
+
+Abrimos nuestro editor y copiamos el siguiente código:
+
+'
+    function toUpperCase(param) {                                                    //L-1
+        return param.toUpperCase();                                                  //L-2
+    }                                                                                //L-3
+   
+    module.exports = toUpperCase;                                                    //L-5
+'
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Define la cabecera de nuestro algoritmo, junto con el parametro de entrada.
+L-2  - Línea que indica la devolución del resultado de nuestro método.
+L-3  - Cierre de nuestro algoritmo.
+L-5  - Almacena la función 'toUpperCase' en una variable que luego 'Jest' recupera con 
+       la línea 1 del fichero suite.test.js 
+       
+Cerramos el editor y volvemos a la terminal.
+
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
+        
+         FAIL ./suite.test.js
+          √ Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] ) (4ms)
+          √ CharAt("user:ape1:ape2:city",8)  to equals 1 ) (3ms)
+          √ toLowerCase("Hello World") to equals "hello world")
+          √ toUppercase("Hello World") to equals "HELLO WORLD")
+          × indexOf("Hello World","World") to equals 6)
+
+Ya no tenemos Fallo! 
+Simplemente se queja de que el siguiente test no tiene implementación.
+
+Ya estamos llegando al final del testing!
+```
+
+### indexOf 
+```
+Ahora vamos a desarrollar nuestro algoritmo toLowerCase:
+
+En la propia carpeta '002-testing' ejecutamos el siguiente comando:
+    $ touch test02-indexOf.js
+
+En este fichero vamos añadir una pequeña función que devuelva un resultado 
+con el un número/índice que indique la posición de la palabra.
+
+Abrimos nuestro editor y copiamos el siguiente código:
+
+'
+    function indexOf(param,palabra) {                                                //L-1
+        return param.indexOf(palabra);                                               //L-2
+    }                                                                                //L-3
+   
+    module.exports = indexOf;                                                        //L-5
+'
+
+A continuación describimos cada una de las líneas:
+
+L-1  - Define la cabecera de nuestro algoritmo, junto con el parametro de entrada.
+L-2  - Línea que indica la devolución del resultado de nuestro método.
+L-3  - Cierre de nuestro algoritmo.
+L-5  - Almacena la función 'indexOf' en una variable que luego 'Jest' recupera con 
+       la línea 1 del fichero suite.test.js 
+       
+Cerramos el editor y volvemos a la terminal.
+
+Ejecutamos el siguiente comando :
+    $ npm run test
+    
+Debemos de obtener la siguiente salida:
+        
+            > jest
+
+            PASS ./suite.test.js
+              √ Split("user:ape1:ape2:city",':' to equals ["user","ape1","ape2","city"] ) (4ms)
+              √ CharAt("user:ape1:ape2:city",8)  to equals 1 ) (1ms)
+              √ toLowerCase("Hello World") to equals "hello world")
+              √ toUppercase("Hello World") to equals "HELLO WORLD") (1ms)
+              √ indexOf("Hello World","World") to equals 6) (1ms)
+
+            Test Suites: 1 passed, 1 total
+            Tests:       5 passed, 5 total
+            Snapshots:   0 total
+            Time:        4.039s
+            Ran all test suites.
+
+Éxito!
 ```
 
 ### Conclusiones
 ```
-Después de haber leído esta pequeña introducción simplemente queremos que asientes conceptos...
-
-La capacidad de llegar a un resultado acotando diferentes soluciones es la diferencia entre la 
-persona que desarrolla y testea a la persona que testea y desarrolla.
-
-Son dos conceptos totalmente diferente que ahora mismo no podrás apreciar.
-
-Hay gente que tarda años en saber/ver estas diferencias... En Geekshubs queremos dejarlas claras desde 
-el minuto uno de la formación. Por ello decimos que queremos que simplemente absorvas conocimiento, luego 
-puliremos los detalles.
-
-Para finalizar, te diremos que estás aprendiendo hábitos de desarrollo, capacidades de análisis y premisas 
-de metolodogía ágil.
-
-Tú aún no lo sabes, pero vas a empezar a pensar en construir tu meta poco a poco a base de pequeños Tests.  
-
-Ahora ondea en las referencias.
-
+Hemos empezado hacer TDD sin saberlo.
+Hemos guiado el diseño de nuestros algoritmos a través de los test y no al revés.
 ```
 
 
 ### Referencias
   * [String.prototype](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/prototype)
-  * [Pirámide de Pruebas - microsoft](https://docs.microsoft.com/es-es/dotnet/architecture/modern-web-apps-azure/test-asp-net-core-mvc-apps)
-  * [Prueba unitaria - wikipedia](https://es.wikipedia.org/wiki/Prueba_unitaria)
-  * [Unit-Testing](https://less.works/less/technical-excellence/unit-testing.html)
-  * [Patrón AAA](https://uniwebsidad.com/libros/tdd/capitulo-5/las-tres-partes-del-test-aaa)
 
