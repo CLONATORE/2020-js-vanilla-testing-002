@@ -150,7 +150,7 @@ En la terminal, abrimos nuestro editor y copiamos el siguiente código en suite.
 ' 
     const split = require('./test02-split.js');                                                  //L-1
 
-    test('Split("user:ape1:ape2:city",\':\' to equals ["user","ape1","ape2","city"] )', ()=>{      //L-3
+    test('Split("user:ape1:ape2:city",\':\' to equals ["user","ape1","ape2","city"] )', ()=>{    //L-3
     // Arrange
     var expected = ["user","ape1","ape2","city"];                                                //L-5
 
