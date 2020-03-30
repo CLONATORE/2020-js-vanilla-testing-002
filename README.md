@@ -189,11 +189,11 @@ Cerramos el editor y volvemos a la terminal.
 En la terminal, abrimos nuestro editor y copiamos el siguiente código (abajo) en suite.test.js:
 
 ' 
-    const charAt = require('./test02-charAt.js');                                                //L-1
+    const charAt = require('./test02-charAt.js');                                               //L-1
 
-    test('CharAt("user:ape1:ape2:city",8)  to equals 1 )', ()=>{                                 //L-3
+    test('CharAt("user:ape1:ape2:city",8)  to equals 1 )', ()=>{                                //L-3
     // Arrange
-    var toBe = '1';                                                                              //L-5
+    var toBe = '1';                                                                             //L-5
 
     // Act
     var result = charAt("user:ape1:ape2:city", 8);                                              //L-8
