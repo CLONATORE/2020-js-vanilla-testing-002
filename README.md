@@ -47,10 +47,10 @@ Instala 'Jest' con el siguiente comando:
     $ npm install --save-dev jest
  
 Valida que la terminal te ha mostrado un mensaje terminado como este:
-      npm WARN 001-testing No description
-      npm WARN 001-testing No repository field.
-      npm WARN 001-testing No README data
-      npm WARN 001-testing No license field.
+      npm WARN 002-testing No description
+      npm WARN 002-testing No repository field.
+      npm WARN 002-testing No README data
+      npm WARN 002-testing No license field.
      
       + jest@25.2.3
       added 474 packages from 282 contributors and audited 1095501 packages in 31.784s
