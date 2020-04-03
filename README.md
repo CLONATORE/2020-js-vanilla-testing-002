@@ -1,7 +1,7 @@
 # 2020 js vanilla testing 002
 
 <p align="center">
-    <img src="https://github.com/GeeksHubsAcademy/hello-world/blob/master/assets/media/logo/logo.png" >	
+    <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/logo.png" >	
 </p>
 
 ## Temario
@@ -638,3 +638,23 @@ Revisa las referencias.
   * [String.prototype](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/prototype)
   * [TDD](https://medium.com/laboratoria-how-to/qu%C3%A9-es-tdd-por-qu%C3%A9-todos-te-odiar%C3%A1n-si-no-lo-haces-63ce217d2bc3)
   * [Test Driven Development by Example -Kent Beck](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnx0ZXN0MTIzNHNpbTQ2NXxneDpiYTJmYWIwYTAyOGJiZmQ)
+  
+  
+  
+  
+  
+<div>
+    <p align="center">
+        <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/pixel.png" >	
+    </p>
+  </div>
+  
+  <footer>
+     <div>
+        <a href="https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-001"><< Atrás</a>
+         <a href="https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-002/blob/master/README.md#referencias">
+        <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/pixel.png" align="center"                  height="10" width="714"/>
+         </a>
+         <a href="https://github.com/GeeksHubsAcademy/2020-js-vanilla-testing-003">Siguiente >></a>   
+    </div>
+
